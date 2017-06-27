@@ -1,5 +1,6 @@
 #require_relative '../bin/mogen'
 require_relative 'session'
+require_relative 'user'
 #require_relative 'tag'
 
 # top hashtags https://websta.me/hot
@@ -32,7 +33,7 @@ tag_names = %w(
 #
 #
 # TODO what if there is no load more?:
+user = User.all.first
 @session = Session.new(tag_names)
-#@session = Session.new
-@session.login
+@session.login(user)
 @session.like_tags

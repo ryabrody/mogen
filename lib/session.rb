@@ -3,6 +3,7 @@ require 'capybara/dsl'
 require 'capybara/poltergeist'
 require 'pry'
 require 'dotenv'
+require 'yaml'
 require_relative 'tag'
 require_relative 'page/login'
 
@@ -20,8 +21,8 @@ class Session
     @tags = get_tags(tag_names)
   end
 
-  def login
-    login_page = Page::Login.new
+  def login(user)
+    login_page = Page::Login.new(user)
     login_page.open
     login_page.fill_out
     login_page.submit
