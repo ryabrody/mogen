@@ -1,15 +1,12 @@
-require_relative 'base'
-#require_relative 'post'
-
 module Page
-  class Tag < Base
+  class Tag
     NUM_POSTS_FIRST_PAGE = 21
 
-    attr_reader :tag
+    attr_reader :page, :tag
 
-    def initialize(tag)
+    def initialize(page, tag)
+      @page = page
       @tag = tag
-      super
     end
 
     def open

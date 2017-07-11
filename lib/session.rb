@@ -2,26 +2,27 @@ require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
 require 'pry'
-require 'dotenv'
+require 'yaml'
 require_relative 'tag'
 require_relative 'page/login'
-
-Dotenv.load
 
 Capybara.run_server = false
 Capybara.app_host = "https://www.instagram.com"
 Capybara.current_driver = :poltergeist
 
 class Session
-  attr_accessor :like_counter, :tags, :like_tags
+  attr_accessor :like_counter, :tags, :like_tags, :user, :page
 
-  def initialize(tag_names = [])
+  def initialize(tag_names = [], user)
     @like_counter = 0
     @tags = get_tags(tag_names)
+    @user = user
+    @page = Capybara::Session.new(Capybara.current_driver) 
+    @page.driver.options[:js_errors] = false
   end
 
   def login
-    login_page = Page::Login.new
+    login_page = Page::Login.new(page, user)
     login_page.open
     login_page.fill_out
     login_page.submit
@@ -45,6 +46,5 @@ class Session
 
   def get_hottest_tag_names
     websta_page.open
-
   end
 end

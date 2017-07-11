@@ -1,16 +1,21 @@
-require_relative 'base'
-#require_relative 'page/base'
-
 module Page
-  class Login < Base
+  class Login
+    attr_reader :username, :password, :page
+
+    def initialize(page, user)
+      @page = page
+      @username = user.username
+      @password = user.password
+    end
+
     def open
       page.visit '/'
       page.find('a', text: 'Log in').click
     end
 
     def fill_out
-      page.fill_in 'username', with: ENV['USERNAME']
-      page.fill_in 'password', with: ENV['PASSWORD']
+      page.fill_in 'username', with: username
+      page.fill_in 'password', with: password
     end
 
     def submit
