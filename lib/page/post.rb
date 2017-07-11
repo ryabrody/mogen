@@ -1,12 +1,12 @@
 require_relative 'base'
 
 module Page
-  class Post < Base
-    attr_reader :path
+  class Post
+    attr_reader :page, :path
 
-    def initialize(path)
+    def initialize(page, path)
+      @page = page
       @path = path
-      super
     end
 
     def open

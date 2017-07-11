@@ -11,11 +11,11 @@ class Tag
   end
 
   def posts(num)
-    tags_page = Page::Tag.new(name)
+    tags_page = Page::Tag.new(session.page, name)
     tags_page.open
     tags_page.load_max(num)
     tags_page.posts_urls.map do |url| 
-      Post.new(url: url[:href]) 
+      Post.new(session.page, url: url[:href]) 
     end
   end
 

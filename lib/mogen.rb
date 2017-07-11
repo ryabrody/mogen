@@ -6,6 +6,7 @@ require_relative 'user'
 # top hashtags https://websta.me/hot
 # tag_names = %w(flamingofloat flamingo flamingos flamingofloats floaties flamingopink flamingopoolparty pool river beer tropical)
 
+
 tag_names = %w(
   love
   instagood
@@ -32,8 +33,12 @@ tag_names = %w(
 # @session = Session.new(tag_names)
 #
 #
-# TODO what if there is no load more?:
-user = User.all.first
-@session = Session.new(tag_names)
-@session.login(user)
-@session.like_tags
+# TODO what if there is no load more?
+
+users = User.all
+users.each do |user|
+  puts user.username
+  @session = Session.new(tag_names, user)
+  @session.login
+  @session.like_tags
+end

@@ -1,11 +1,11 @@
 require_relative 'base'
 
 module Page
-  class Login < Base
-    attr_reader :username, :password
+  class Login
+    attr_reader :username, :password, :page
 
-    def initialize(user)
-      super
+    def initialize(page, user)
+      @page = page
       @username = user.username
       @password = user.password
     end
