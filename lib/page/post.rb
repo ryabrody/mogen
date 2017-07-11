@@ -1,5 +1,3 @@
-require_relative 'base'
-
 module Page
   class Post
     attr_reader :page, :path

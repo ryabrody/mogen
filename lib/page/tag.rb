@@ -1,5 +1,3 @@
-require_relative 'base'
-
 module Page
   class Tag
     NUM_POSTS_FIRST_PAGE = 21

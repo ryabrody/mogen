@@ -1,5 +1,3 @@
-require_relative 'base'
-
 module Page
   class Login
     attr_reader :username, :password, :page

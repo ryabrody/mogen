@@ -2,12 +2,9 @@ require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
 require 'pry'
-require 'dotenv'
 require 'yaml'
 require_relative 'tag'
 require_relative 'page/login'
-
-Dotenv.load
 
 Capybara.run_server = false
 Capybara.app_host = "https://www.instagram.com"
