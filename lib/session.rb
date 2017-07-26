@@ -40,7 +40,7 @@ class Session
 
   def like_tags
     tags.each do |tag|
-      tag.like_posts(60)
+      tag.like_posts(50)
     end
   end
 
