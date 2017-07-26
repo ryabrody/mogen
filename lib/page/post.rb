@@ -33,6 +33,7 @@ module Page
         @retried_count = 1
       end
       if @retried_count <= 2
+        puts "Retry visit post #{path}"
         open
       else
         puts "Coulud not visit post #{path}"
