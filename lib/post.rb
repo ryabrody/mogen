@@ -11,7 +11,12 @@ class Post
 
   def like
     post_page = Page::Post.new(page, path)
-    post_page.open
+    begin
+      post_page.open
+    rescue Capybara::Poltergeist::StatusFailError
+      puts('could not be openend') 
+      return false
+    end
     begin
       if post_page.liked?
         puts('already liked') 

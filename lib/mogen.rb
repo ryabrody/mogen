@@ -8,9 +8,7 @@ require_relative 'user'
 
 
 
-  # selfie
 tag_names = %w(
-  summer
   instadaily
   friends
   art
@@ -29,6 +27,8 @@ tag_names = %w(
   follow
   me
   picoftheday
+  selfie
+  summer
 )
 # tag namess optional
 # @session = Session.new(tag_names)

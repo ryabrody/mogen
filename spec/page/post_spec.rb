@@ -2,15 +2,18 @@ require 'spec_helper'
 require_relative '../../lib/page/post'
 
 describe Page::Post do
-  let(:path) { '/beautifull-example-page' }
+  let(:path) { '/beautifull' }
   let(:page) { Capybara::Session.new(Capybara.current_driver) }
+  lel(:data) do
+    { url: "#{Capybara.app_host}#{path}" }
+  end
   let(:subject) { Page::Post.new(page, path) }
 
-  it 'visits the post page' do
-    expect(subject.open).to eq('status' => 'success')
+  it 'likes a post' do
+    expect(post.like).to be_true
   end
 
-  context 'error on visit happens' do
+  context 'error on visit post happens' do
     let(:response) do
       {
         'name' => 'Poltergeist.StatusFailError',
@@ -27,8 +30,7 @@ describe Page::Post do
     end
 
     it 'retries visiting the post page when error occurs' do
-      subject.open
-      expect(page).to have_received(:visit).thrice
+      expect(post.like).to be_false
     end
   end
 end

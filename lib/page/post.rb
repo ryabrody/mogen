@@ -9,8 +9,6 @@ module Page
 
     def open
       page.visit(path)
-    rescue Capybara::Poltergeist::StatusFailError
-      retry_open
     end
 
     def press_like
@@ -24,20 +22,6 @@ module Page
     def like
       heart = page.find('a[role="button"]', text: 'Like')
       heart.click
-    end
-
-    def retry_open
-      if @retried_count
-        @retried_count = @retried_count + 1
-      else
-        @retried_count = 1
-      end
-      if @retried_count <= 2
-        puts "Retry visit post #{path}"
-        open
-      else
-        puts "Coulud not visit post #{path}"
-      end
     end
   end
 end
