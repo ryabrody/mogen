@@ -23,9 +23,7 @@ tag_names = %w(
   tbt
   cute
   followme
-  like4like
   follow
-  me
   picoftheday
   selfie
   summer

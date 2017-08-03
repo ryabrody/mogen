@@ -9,14 +9,19 @@ describe Post do
   end
   let(:subject) { Post.new(page, data) }
 
-  # TODO stub page
+  let(:base) { Capybara::Poltergeist::Node.new(page.driver, 4, 6) } 
+  let(:element) { Capybara::Node::Element.new(page, base, nil, nil) }
+
+  before :each do
+    allow_any_instance_of(Page::Post).to receive(:like).and_return(element)
+  end
 
   context '#like' do
-    it 'likes a post' do
-      expect(subject.like).to be true
+    it 'runs without error' do
+      expect(subject.like).to be nil
     end
 
-    context 'error on visit post happens' do
+    context 'when error on visit happens' do
       let(:response) do
         {
           'name' => 'Poltergeist.StatusFailError',
