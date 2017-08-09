@@ -14,7 +14,7 @@ class Post
     begin
       post_page.open
     rescue Capybara::Poltergeist::StatusFailError
-      puts('could not be openend') 
+      puts("Could not open Post #{url}") 
       return false
     end
     begin

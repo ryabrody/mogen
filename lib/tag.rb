@@ -15,6 +15,7 @@ class Tag
     begin
       tags_page.open
     rescue Capybara::Poltergeist::StatusFailError
+      puts "Could not open  #{@hash} tag page" 
       return []
     end
     tags_page.load_max(num)

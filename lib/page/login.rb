@@ -13,7 +13,7 @@ module Page
         tries ||= 10
         page.visit '/'
       rescue Capybara::Poltergeist::StatusFailError
-        puts "Login failed will retry now. Retries left: #{tries} times"
+        puts "Login #{username} failed will retry now. Retries left: #{tries} times"
         retry unless (tries -= 1).zero?
       end
       page.find('a', text: 'Log in').click
