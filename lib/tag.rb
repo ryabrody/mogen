@@ -12,12 +12,12 @@ class Tag
 
   def posts(num)
     tags_page = Page::Tag.new(session.page, name)
-    tags_page.load_max(num)
     begin
       tags_page.open
     rescue Capybara::Poltergeist::StatusFailError
       return []
     end
+    tags_page.load_max(num)
     tags_page.posts_urls.map do |url| 
       Post.new(session.page, url: url[:href]) 
     end

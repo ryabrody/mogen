@@ -4,9 +4,6 @@ require_relative '../lib/session'
 require_relative '../lib/user'
 
 describe Post do
-  #let(:page) { Capybara::Session.new(::Capybara.current_driver) }
-  #let(:data) { { url: "#{Capybara.app_host}/unknown" } }
-  #let(:element) { capybara_node_element(page) }
   let(:tag_names) { %w{cute, happy} }
   let(:user) { User.new(username: 'Hans', password: 123445)}
   let(:session) { Session.new(tag_names, user) }
