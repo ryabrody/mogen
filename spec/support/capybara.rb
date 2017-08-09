@@ -2,7 +2,7 @@ module Support
   module Capybara
     # use this element to stub capybara elements
     # example:
-    # allow_any_instance_of(Page::Post).to receive(:like).and_return(element)
+    # allow(subject.page).to receive(:find).and_return(element)
     def capybara_node_element(page)
       base = ::Capybara::Poltergeist::Node.new(page.driver, 4, 6)
       ::Capybara::Node::Element.new(page, base, nil, nil)
