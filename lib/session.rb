@@ -13,11 +13,14 @@ Capybara.current_driver = :poltergeist
 class Session
   attr_accessor :like_counter, :tags, :like_tags, :user, :page
 
-  def initialize(tag_names = [], user)
+  def initialize(
+    tag_names = %w(tbt cute happy fashion followme me follow like4like selfie winter picoftheday summer friends instadaily girl fun repost love instagood photooftheday beautiful),
+    user
+  )
     @like_counter = 0
+    @page = Capybara::Session.new(Capybara.current_driver) 
     @tags = get_tags(tag_names)
     @user = user
-    @page = Capybara::Session.new(Capybara.current_driver) 
     @page.driver.options[:js_errors] = false
   end
 
@@ -29,18 +32,13 @@ class Session
   end
 
   def get_tags(names)
-    if names.any?
-      names
-    else
-      names << %w(tbt cute happy fashion followme me follow like4like selfie winter picoftheday summer friends instadaily girl fun repost love instagood photooftheday beautiful )
-      names.flatten!
-    end
     names.map { |name| Tag.new(self, name) }
   end
 
-  def like_tags
+  def like_and_comment_for_all_tags
     tags.each do |tag|
-      tag.like_posts(50)
+      binding.pry
+      #tag.like_posts(50)
     end
   end
 

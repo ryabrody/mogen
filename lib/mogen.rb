@@ -7,26 +7,26 @@ require_relative 'user'
 # tag_names = %w(flamingofloat flamingo flamingos flamingofloats floaties flamingopink flamingopoolparty pool river beer tropical)
 
 
+# repost
+# girl
+# love
+# instagood
+# photooftheday
+# beautiful
+# fashion
+# happy
+# tbt
+# cute
+# followme
+# follow
+# picoftheday
+# selfie
+# summer
 
 tag_names = %w(
   instadaily
   friends
   art
-  repost
-  girl
-  love
-  instagood
-  photooftheday
-  beautiful
-  fashion
-  happy
-  tbt
-  cute
-  followme
-  follow
-  picoftheday
-  selfie
-  summer
 )
 # tag namess optional
 # @session = Session.new(tag_names)
@@ -39,5 +39,5 @@ users.each do |user|
   puts user.username
   @session = Session.new(tag_names, user)
   @session.login
-  @session.like_tags
+  @session.like_and_comment_for_all_tags
 end

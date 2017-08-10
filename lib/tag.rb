@@ -2,15 +2,16 @@ require_relative 'page/tag'
 require_relative '../lib/post'
 
 class Tag
-  attr_reader :hash, :name, :session
+  attr_reader :hash, :name, :session, :posts
 
   def initialize(session, name)
     @name = name
     @hash = "##{name}"
     @session = session
+    @posts ||= posts
   end
 
-  def posts(num)
+  def posts(num = 3)
     tags_page = Page::Tag.new(session.page, name)
     begin
       tags_page.open
