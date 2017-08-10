@@ -4,7 +4,6 @@ class User
   def initialize(params = {})
     @username = params[:username]
     @password = params[:password]
-
   end
 
   def self.all

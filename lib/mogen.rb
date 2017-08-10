@@ -7,7 +7,13 @@ require_relative 'user'
 # tag_names = %w(flamingofloat flamingo flamingos flamingofloats floaties flamingopink flamingopoolparty pool river beer tropical)
 
 
+
 tag_names = %w(
+  instadaily
+  friends
+  art
+  repost
+  girl
   love
   instagood
   photooftheday
@@ -17,17 +23,10 @@ tag_names = %w(
   tbt
   cute
   followme
-  like4like
   follow
-  me
   picoftheday
   selfie
   summer
-  instadaily
-  friends
-  art
-  girl
-  repost
 )
 # tag namess optional
 # @session = Session.new(tag_names)
