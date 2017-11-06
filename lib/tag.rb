@@ -20,7 +20,7 @@ class Tag
     end
     tags_page.load_max(num)
     tags_page.posts_urls.map do |url| 
-      Post.new(session.page, url: url[:href]) 
+      Post.new(session.page, url: url[:href], username: session.user.username) 
     end
   end
 
@@ -29,6 +29,15 @@ class Tag
       if post.like
         session.like_counter += 1
         puts "Number of likes: #{session.like_counter}"
+      end
+    end
+  end
+
+  def comment_posts(limit)
+    posts(limit).each do |post|
+      if post.comment
+        session.comment_counter += 1
+        puts "Number of comments: #{session.comment_counter}"
       end
     end
   end
