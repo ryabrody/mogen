@@ -47,9 +47,6 @@ class Post
       puts "Post #{url} does not exist anymore"
       return false
     end
-
-    puts 'comment'
-    true
   end
 
   private
