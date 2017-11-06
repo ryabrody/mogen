@@ -37,6 +37,6 @@ users.each do |user|
   puts user.username
   @session = Session.new(tag_names, user)
   @session.login
-  # @session.like_tags
+  @session.like_tags
   @session.comment_tags
 end
