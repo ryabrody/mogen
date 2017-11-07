@@ -11,10 +11,11 @@ Capybara.app_host = "https://www.instagram.com"
 Capybara.current_driver = :poltergeist
 
 class Session
-  attr_accessor :like_counter, :tags, :like_tags, :user, :page
+  attr_accessor :like_counter, :comment_counter, :tags, :like_tags, :user, :page
 
   def initialize(tag_names = [], user)
     @like_counter = 0
+    @comment_counter = 0
     @tags = get_tags(tag_names)
     @user = user
     @page = Capybara::Session.new(Capybara.current_driver) 
@@ -41,6 +42,12 @@ class Session
   def like_tags
     tags.each do |tag|
       tag.like_posts(50)
+    end
+  end
+
+  def comment_tags
+    tags.each do |tag|
+      tag.comment_posts(50)
     end
   end
 
