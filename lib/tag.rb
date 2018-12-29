@@ -10,7 +10,7 @@ class Tag
     @session = session
   end
 
-  def posts(num)
+  def posts(limit)
     tags_page = Page::Tag.new(session.page, name)
     begin
       tags_page.open
@@ -18,9 +18,8 @@ class Tag
       puts "Could not open  #{@hash} tag page" 
       return []
     end
-    tags_page.load_max(num)
-    tags_page.posts_urls.map do |url| 
-      Post.new(session.page, url: url[:href], username: session.user.username) 
+    tags_page.load_max_urls(limit).map do |url|
+      Post.new(session.page, url: url, username: session.user.username) 
     end
   end
 

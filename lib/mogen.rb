@@ -8,29 +8,66 @@ require_relative 'user'
 
 
 tag_names = %w(
-  birthday
-  red
-  workout
-  sweet
-  wedding
-  blackandwhite
-  fit
-  instafood
-  instasize
-  flowers
-  iphonesia
-  tweetgram
-  design
-  instafollow
-  my
-  webstagram
-  christmas
+  love
+  instagood
+  photooftheday
+  fashion
+  beautiful
+  happy
+  cute
+  tbt
+  like4like
+  followme
+  picoftheday
+  follow
+  me
+  selfie
+  art
+  summer
+  instadaily
+  friends
+  repost
+  nature
+  girl
+  fun
+  style
+  smile
+  food
+  instalike
+  travel
+  likeforlike
+  family
+  fitness
+  follow4follow
+  igers
+  beauty
+  tagsforlikes
+  life
+  nofilter
+  amazing
 )
 # tag namess optional
 # @session = Session.new(tag_names)
 #
 #
 # TODO what if there is no load more?
+#  birthday
+#  red
+#  workout
+#  sweet
+#  wedding
+#  blackandwhite
+#  fit
+#  instafood
+#  instasize
+#  flowers
+#  iphonesia
+#  tweetgram
+#  design
+#  instafollow
+#  my
+#  webstagram
+#  christmas
 
 users = User.all
 users.each do |user|
@@ -38,5 +75,5 @@ users.each do |user|
   @session = Session.new(tag_names, user)
   @session.login
   @session.like_tags
-  @session.comment_tags
+  #@session.comment_tags
 end

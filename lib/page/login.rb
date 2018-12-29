@@ -11,12 +11,12 @@ module Page
     def open
       begin
         tries ||= 10
-        page.visit '/'
+        page.visit '/accounts/login/'
       rescue Capybara::Poltergeist::StatusFailError
         puts "Login #{username} failed will retry now. Retries left: #{tries} times"
         retry unless (tries -= 1).zero?
       end
-      page.find('a', text: 'Log in').click
+      page.find('button', text: 'Log in', match: :first)
     end
 
     def fill_out
@@ -25,8 +25,14 @@ module Page
     end
 
     def submit
-      page.find('button', text: 'Log in').trigger('click')
+      page.find('button', text: 'Log in', match: :first).click
       puts 'logged in' unless page.has_selector?('Log in')
+    end
+
+    def turn_off_notifications
+    rescue Capybara::ElementNotFound
+      page.find('button', text: 'Not Now', match: :first).click
+      puts 'turned off notification'
     end
   end
 end

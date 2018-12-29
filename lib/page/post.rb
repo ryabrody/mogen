@@ -17,12 +17,12 @@ module Page
     end
 
     def liked?
-      page.has_link?('Unlike')
+      page.has_css?('button span[aria-label="Unlike"]')
     end
 
     def like
-      heart = page.find('a[role="button"]', text: 'Like')
-      heart.click
+      heart = page.find('button span[aria-label="Like"][class*="Heart"]')
+      heart.trigger('click')
     end
 
     def commented_by?(username)

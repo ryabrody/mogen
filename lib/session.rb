@@ -27,6 +27,7 @@ class Session
     login_page.open
     login_page.fill_out
     login_page.submit
+    login_page.turn_off_notifications
   end
 
   def get_tags(names)
@@ -41,13 +42,13 @@ class Session
 
   def like_tags
     tags.each do |tag|
-      tag.like_posts(50)
+      tag.like_posts(57)
     end
   end
 
   def comment_tags
     tags.each do |tag|
-      tag.comment_posts(50)
+      tag.comment_posts(57)
     end
   end
 
