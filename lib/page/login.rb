@@ -25,7 +25,13 @@ module Page
     end
 
     def submit
-      page.find('button', text: 'Log in', match: :first).click
+      page.find('button[type="submit"]').trigger('click')
+      # page.find('button div', text: 'Log In', match: :first).click
+      # page.find('button div', text: 'Log In', match: :first).click
+      sleep 10
+      page.visit '/'
+
+      page.find("a[href='/#{username}/']", match: :first)
       puts 'logged in' unless page.has_selector?('Log in')
     end
 

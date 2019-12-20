@@ -1,0 +1,5 @@
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require': cannot load such file -- capybara (LoadError)
+	from /System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from /Users/francarast/Sites/ruby/mogen/lib/session.rb:1:in `<top (required)>'
+	from lib/mogen.rb:5:in `require_relative'
+	from lib/mogen.rb:5:in `<main>'

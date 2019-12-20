@@ -1,3 +1,6 @@
+`PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin`
+# the above is needed for cronjob
+
 #require_relative '../bin/mogen'
 require_relative 'session'
 require_relative 'user'
