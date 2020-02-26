@@ -10,6 +10,10 @@ module Page
 
     def open
       page.visit(path)
+      true
+    rescue StandardError, AnotherError => e
+      puts "Could not open page: #{e.inspect}"
+      false
     end
 
     def press_like
@@ -17,11 +21,14 @@ module Page
     end
 
     def liked?
-      page.has_css?('button span[aria-label="Unlike"]')
+      page.has_css?('button svg[aria-label="Unlike"][height="24"]')
+    rescue StandardError, AnotherError => e
+      puts "Could not find a liked heart: #{e.inspect}"
+      true # We skip this tag with assuming it was alredy liked
     end
 
     def like
-      heart = page.find('button span[aria-label="Like"][class*="Heart"]')
+      heart = page.find('button svg[aria-label="Like"][height="24"]')
       heart.trigger('click')
     end
 

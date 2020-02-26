@@ -12,7 +12,9 @@ class Post
 
   def like
     post_page = Page::Post.new(page, path)
-    open(post_page)
+    if open(post_page) == false
+      return false
+    end
     begin
       if post_page.liked?
         puts('already liked') 
