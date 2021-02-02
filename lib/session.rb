@@ -9,6 +9,7 @@ require_relative 'page/login'
 Capybara.run_server = false
 Capybara.app_host = "https://www.instagram.com"
 Capybara.current_driver = :cuprite
+#Capybara.current_driver = :selenium_chrome
 
 class Session
   attr_accessor :like_counter, :comment_counter, :tags, :like_tags, :user, :page
@@ -20,6 +21,7 @@ class Session
     @user = user
     @page = Capybara::Session.new(Capybara.current_driver) 
     @page.driver.options[:js_errors] = false
+    @page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:86.0) Gecko/20100101 Firefox/86.0" }
   end
 
   def login
@@ -42,13 +44,13 @@ class Session
 
   def like_tags
     tags.each do |tag|
-      tag.like_posts(57)
+      tag.like_posts(50)
     end
   end
 
   def comment_tags
     tags.each do |tag|
-      tag.comment_posts(57)
+      tag.comment_posts(50)
     end
   end
 
