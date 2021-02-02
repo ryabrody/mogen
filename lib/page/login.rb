@@ -13,10 +13,11 @@ module Page
         tries ||= 10
         page.visit '/accounts/login/'
       rescue Capybara::Poltergeist::StatusFailError
+        binding.pry
         puts "Login #{username} failed will retry now. Retries left: #{tries} times"
         retry unless (tries -= 1).zero?
       end
-      page.find('button', text: 'Log in', match: :first)
+      page.find_button('Log in')
     end
 
     def fill_out
