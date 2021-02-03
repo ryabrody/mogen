@@ -12,105 +12,25 @@ require_relative 'user'
 # tag_names = %w(flamingofloat flamingo flamingos flamingofloats floaties flamingopink flamingopoolparty pool river beer tropical)
 
 
-#worked good:
-#  love
-#  instagood
-#  photooftheday
-#  fashion
-#  beautiful
-#  happy
-#  cute
-#  tbt
-#  like4like
-#  followme
-#  picoftheday
-#  follow
-#  selfie
-#  art
-#  summer
-#  instadaily
-#  friends
-#  repost
-#  nature
-#  girl
-#  fun
-#  style
-#  smile
-#  food
-#  travel
-#  likeforlike
-#  family
-#  fitness
-#  follow4follow
-#  igers
-#  beauty
-#  tagsforlikes
-#  life
-#  nofilter
-tag_names = %w(
-  FashionPhoto
-  FashionInfluencer
-  FashionDaily
-  StyleInspiration
-  Clothes
-  Urbanstyle
-  DressedUp
-  StyleBlog
-  Fashionstylist
-  makeupturorial
-  makeupgoals
-  makeupidea
-  makeuplove
-  glammakeup
-  mua
-  makeuppro
-  makeuptransformatio
-  makeuptime
-  makeuptutorial 
-  eyeshadowlooks
-  makeuplooks
-  makeup
-  beautybloggers
-  beautytips
-  muasfeaturing
-  photoshoot
-  photo
-  session
-  photomodel
-  fashion
-  love
-  beautiful 
-)
- # amazing
-  #instalike
-  #me
-# tag namess optional
-# @session = Session.new(tag_names)
+#users = User.all
+##users = ['a', 'b'] 
+#users.each do |user|
+#  ractor = Ractor.new do
+#    run(receive)
+#    #user_in_ractor = receive # receive blocks till somebody will pass message
+#    #puts "I am in Ractor! a=#{user_in_ractor}"
+#  end
 #
+#  session = Session.new(user.tag_names, user)
 #
-# TODO what if there is no load more?
-#  birthday
-#  red
-#  workout
-#  sweet
-#  wedding
-#  blackandwhite
-#  fit
-#  instafood
-#  instasize
-#  flowers
-#  iphonesia
-#  tweetgram
-#  design
-#  instafollow
-#  my
-#  webstagram
-#  christmas
+#  ractor.send(session)  # pass it
+#  ractor.take
+#end
 
 users = User.all
 users.each do |user|
   puts user.username
-  @session = Session.new(tag_names, user)
+  @session = Session.new(user.tag_names, user)
   @session.login
   @session.like_tags
   #@session.comment_tags
