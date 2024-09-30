@@ -12,22 +12,26 @@ class Tag
 
   def posts(limit)
     tags_page = Page::Tag.new(session.page, name)
-    begin
-      tags_page.open
-    rescue Capybara::Poltergeist::StatusFailError
-      puts "Could not open  #{@hash} tag page" 
-      return []
-    end
-    tags_page.load_max_urls(limit).map do |url|
-      Post.new(session.page, url: url, username: session.user.username) 
-    end
+    tags_page.open
+    # begin
+    # rescue Capybara::Poltergeist::StatusFailError
+    #   puts "Could not open  #{@hash} tag page" 
+    #   return []
+    # end
+    # tags_page.load_max_urls(limit).map do |url|
+    #   Post.new(session.page, url: url, username: session.user.username) 
+    # end
+    tags_page.load_max_urls(limit).map { |url| Post.new(session.page, url: url, username: session.user.username) }
   end
 
   def like_posts(limit)
+    binding.pry
+    # TODO here ia m logged out
     posts(limit).each do |post|
       if post.like
         session.like_counter += 1
-        puts "Number of likes: #{session.like_counter}"
+        puts "Number of likes: #{session.like_counter} for #{session.user.username}"
+        sleep rand(28..30)
       end
     end
   end

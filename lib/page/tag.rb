@@ -10,7 +10,7 @@ module Page
     end
 
     def open
-      page.visit("tags/#{tag}/")
+      page.visit("explore/tags/#{tag}/")
     end
 
     def load_max_urls(num)

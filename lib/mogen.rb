@@ -27,6 +27,49 @@ require_relative 'user'
 #  ractor.take
 #end
 
+#threads = []
+#
+#users = User.all
+#users.each do |user|
+#  threads << Thread.new do
+#    puts user.username
+#    @session = Session.new(user.tag_names, user)
+#    @session.login
+#    @session.like_tags
+#    #@session.comment_tags
+#  end
+#end
+#threads.map(&:join)
+
+#####def new_ractor(session)
+#####  r = Ractor.new do
+#####    session_in_ractor = receive
+#####    puts "User name: #{session_in_ractor.user.username}"
+#####    #puts user_in_ractor.username
+#####    #@session = Session.new(user_in_ractor.tag_names, user_in_ractor) # i think u need to do  suser and session object and provide both to the ractor
+#####    #@session.login
+#####    #@session.like_tags
+#####    #@session.comment_tags
+#####  end
+#####  binding.pry
+#####  r.send(session)
+#####end
+#####
+#####
+#####
+#####users = User.all
+#####sessions = []
+#####ractors = []
+#####
+#####users.each do |user|
+#####  sessions << Session.new(user.tag_names, user)
+#####end
+#####sessions.each do |session|
+#####  ractors << new_ractor(session)
+#####end
+#####ractors.each(&:take)
+
+
 users = User.all
 users.each do |user|
   puts user.username

@@ -28,7 +28,8 @@ module Page
     end
 
     def like
-      heart = page.find('button svg[aria-label="Like"][height="24"]')
+      # TODO here i am logged out
+      heart = page.find('svg[aria-label="Like"]')
       heart.trigger('click')
     end
 
